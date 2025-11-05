@@ -111,7 +111,7 @@ Digital-Detox-Score/
 
 ### 1️⃣ Clone the Repository
 ```bash
-git clone https://github.com/yourusername/digital-detox-score.git
+git clone https://github.com/tharannum/digital-detox-score.git
 cd digital-detox-score
 ````
 
