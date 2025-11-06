@@ -101,8 +101,8 @@ Digital-Detox-Score/
 
 ### 1️⃣ Clone the Repository
 ```bash
-git clone https://github.com/tharannum/digital-Addiction-score.git
-cd digital-Addiction-score
+git clone https://github.com/tharannum/digitaldetox.git
+cd digitaldetox
 ````
 
 ### 2️⃣ Create Virtual Environment & Install Dependencies
