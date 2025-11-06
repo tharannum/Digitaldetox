@@ -1,5 +1,5 @@
 
-# 🧠 Digital Detox Score Project  
+# 🧠 Digital Addiction Score Project  
 
 ## 📋 Overview  
 The **Digital Detox Score** project is an interactive web application designed to help users evaluate their digital dependency levels.  
