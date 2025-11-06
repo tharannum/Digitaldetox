@@ -15,7 +15,7 @@ It provides personalized insights based on their responses to behavioral questio
 | **Python (FastAPI / Backend)** | Manages quiz logic, API routes, and communication between frontend and database |
 | **Pandas** | Handles score calculation, data aggregation, and statistical insights |
 | **Streamlit** | Builds an intuitive and responsive frontend interface for users |
-| **Plotly** | Generates interactive visualizations and charts for result interpretation |
+| **Streamlit** | Generates interactive visualizations and charts for result interpretation |
 
 ---
 
@@ -58,13 +58,12 @@ Digital-Detox-Score/
 | email | VARCHAR(100) | Email address |
 | age | INT | Participant age |
 | score | INT | Final score |
-| created_at | TIMESTAMP | Record creation time |
+ 
 
 **2️⃣ questions**
 | Column | Type | Description |
 |--------|------|--------------|
 | id | INT (PK, AI) | Question ID |
-| question_text | TEXT | The actual question |
 | option_a | VARCHAR(255) | Option A |
 | option_b | VARCHAR(255) | Option B |
 | option_c | VARCHAR(255) | Option C |
@@ -73,16 +72,7 @@ Digital-Detox-Score/
 | score_b | INT | Score for Option B |
 | score_c | INT | Score for Option C |
 | score_d | INT | Score for Option D |
-| question_type | VARCHAR(100) | Category (e.g., screen time, emotional impact) |
-
-**3️⃣ responses**
-| Column | Type | Description |
-|--------|------|--------------|
-| id | INT (PK, AI) | Response ID |
-| participant_id | INT (FK) | References participants(id) |
-| question_id | INT (FK) | References questions(id) |
-| selected_option | CHAR(1) | User's chosen option (A/B/C/D) |
-| score | INT | Calculated score for that response |
+| weightage | INT| Total Score |
 
 ---
 
@@ -99,7 +89,7 @@ Digital-Detox-Score/
      - **31–70% → Moderate Dependency**  
      - **71–100% → High Dependency**
 
-3. **Result Visualization (Plotly)**  
+3. **Result Visualization (Streamlit)**  
    - Interactive pie chart, gauge, or bar chart displays user’s digital dependency level.  
 
 4. **Data storage (SQL)**  
@@ -111,8 +101,8 @@ Digital-Detox-Score/
 
 ### 1️⃣ Clone the Repository
 ```bash
-git clone https://github.com/tharannum/digital-detox-score.git
-cd digital-detox-score
+git clone https://github.com/tharannum/digital-Addiction-score.git
+cd digital-Addiction-score
 ````
 
 ### 2️⃣ Create Virtual Environment & Install Dependencies
