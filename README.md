@@ -50,29 +50,40 @@ Digital-Detox-Score/
 ## 💾 Database Design  
 
 ### Tables:
-**1️⃣ participants**
-| Column | Type | Description |
-|--------|------|--------------|
-| id | INT (PK, AI) | Unique participant ID |
-| name | VARCHAR(100) | Participant name |
-| email | VARCHAR(100) | Email address |
-| age | INT | Participant age |
-| score | INT | Final score |
+**👤 users**
+| Column     | Type         | Description          |
+| ---------- | ------------ | -------------------- |
+| user_id    | INT (PK, AI) | Unique user ID       |
+| user_name  | VARCHAR(100) | User’s display name  |
+| user_email | VARCHAR(100) | Unique email address |
  
 
-**2️⃣ questions**
-| Column | Type | Description |
-|--------|------|--------------|
-| id | INT (PK, AI) | Question ID |
-| option_a | VARCHAR(255) | Option A |
-| option_b | VARCHAR(255) | Option B |
-| option_c | VARCHAR(255) | Option C |
-| option_d | VARCHAR(255) | Option D |
-| score_a | INT | Score for Option A |
-| score_b | INT | Score for Option B |
-| score_c | INT | Score for Option C |
-| score_d | INT | Score for Option D |
-| weightage | INT| Total Score |
+**❓ questions**
+| Column        | Type         | Description                                  |
+| ------------- | ------------ | -------------------------------------------- |
+| question_id   | INT (PK, AI) | Unique question ID                           |
+| question_text | VARCHAR(400) | Text of the question                         |
+| weightage     | INT          | Importance or scoring weight of the question |
+
+
+**🧩 question_options**
+| Column          | Type                             | Description                                |
+| --------------- | -------------------------------- | ------------------------------------------ |
+| question_id     | INT (FK → questions.question_id) | Links to the corresponding question        |
+| option_label    | CHAR(1)                          | Option label (A, B, C, D, etc.)            |
+| option_text     | VARCHAR(255)                     | Text of the option                         |
+| **Primary Key** | *(question_id, option_label)*    | Ensures each option per question is unique |
+
+
+**📝 user_responses**
+| Column          | Type                             | Description                            |
+| --------------- | -------------------------------- | -------------------------------------- |
+| response_id     | INT (PK, AI)                     | Unique response record ID              |
+| user_id         | INT (FK → users.user_id)         | User who answered                      |
+| question_id     | INT (FK → questions.question_id) | Question being answered                |
+| selected_option | CHAR(1)                          | Option chosen by the user (A, B, C, D) |
+| response_score  | INT                              | Calculated score for that response     |
+
 
 ---
 
