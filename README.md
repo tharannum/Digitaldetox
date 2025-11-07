@@ -54,8 +54,8 @@ Digital-Detox-Score/
 | Column     | Type         | Description          |
 | ---------- | ------------ | -------------------- |
 | user_id    | INT (PK, AI) | Unique user ID       |
-| user_name  | VARCHAR(100) | User’s display name  |
 | user_email | VARCHAR(100) | Unique email address |
+| user_name  | VARCHAR(100) | Unique username      |
  
 
 **❓ questions**
@@ -67,22 +67,21 @@ Digital-Detox-Score/
 
 
 **🧩 question_options**
-| Column          | Type                             | Description                                |
-| --------------- | -------------------------------- | ------------------------------------------ |
-| question_id     | INT (FK → questions.question_id) | Links to the corresponding question        |
-| option_label    | CHAR(1)                          | Option label (A, B, C, D, etc.)            |
-| option_text     | VARCHAR(255)                     | Text of the option                         |
-| **Primary Key** | *(question_id, option_label)*    | Ensures each option per question is unique |
+| Column          | Type                             | Description                                  |
+| --------------- | -------------------------------- | -------------------------------------------- |
+| question_id     | INT (FK → questions.question_id) | Links to the question this option belongs to |
+| option_label    | CHAR(1)                          | Option label (A, B, C, D, etc.)              |
+| option_text     | VARCHAR(255)                     | Text of the answer choice                    |
+| **Primary Key** | *(question_id, option_label)*    | Ensures each option per question is unique   |
 
 
 **📝 user_responses**
-| Column          | Type                             | Description                            |
-| --------------- | -------------------------------- | -------------------------------------- |
-| response_id     | INT (PK, AI)                     | Unique response record ID              |
-| user_id         | INT (FK → users.user_id)         | User who answered                      |
-| question_id     | INT (FK → questions.question_id) | Question being answered                |
-| selected_option | CHAR(1)                          | Option chosen by the user (A, B, C, D) |
-| response_score  | INT                              | Calculated score for that response     |
+| Column          | Type                             | Description                                  |
+| --------------- | -------------------------------- | -------------------------------------------- |
+| user_id         | INT (FK → users.user_id)         | User who answered                            |
+| question_id     | INT (FK → questions.question_id) | Question being answered                      |
+| selected_option | CHAR(1)                          | Option chosen by the user (A, B, C, D, etc.) |
+| **Primary Key** | *(user_id, question_id)*         | Ensures one response per question per user   |
 
 
 ---
