@@ -34,11 +34,42 @@ def get_cursor(commit=False):
         print(e)
         yield None
 
-def calculate_total(user_id):
+def create_new_user():
+    with get_cursor(commit=True) as cursor:
+        cursor.execute("INSERT INTO users () VALUES ()")
+        return cursor.lastrowid  # auto-incremented ID
+
+
+def save_user_answer(user_id, question_id, selected_option):
+    with get_cursor(commit=True) as cursor:
+        cursor.execute("""
+            INSERT INTO user_responses (user_id, question_id, selected_option)
+            VALUES (%s, %s, %s)
+        """, (user_id, question_id, selected_option))
+
+def fetch_user_total_score(user_id):
     with get_cursor() as cursor:
-        cursor.execute('SELECT * FROM user_responses WHERE user_id=%s', (user_id,))
-        user_responses = cursor.fetchall()
-        print(user_responses)
+        cursor.execute("""
+            SELECT 
+                SUM(
+                    q.weightage * 
+                    CASE
+                        WHEN ur.selected_option = 'A' THEN 1
+                        WHEN ur.selected_option = 'B' THEN 2
+                        WHEN ur.selected_option = 'C' THEN 3
+                        WHEN ur.selected_option = 'D' THEN 4
+                    END
+                ) AS weighted_score
+            FROM questions q
+            JOIN user_responses ur
+                ON ur.question_id = q.question_id
+            WHERE ur.user_id = %s
+            GROUP BY ur.user_id;
+        """, (user_id,))
+        
+        result = cursor.fetchone()
+        return result if result else 0
+
 
 if __name__ == "__main__":
-    calculate_total(1)
+    print(fetch_user_total_score(1))
