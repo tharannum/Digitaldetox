@@ -1,0 +1,34 @@
+1. Create python venv (to isolate the packages you install for each project): python -m venv .venv
+
+2. Activate the Virtual Environment: .venv\Scripts\Activate.ps1
+
+Everytime you install a new package, activate the environment.
+
+3. Check if the venv is active: Get-Command python
+f it shows the python binary at .venv\Scripts\python, inside of your project (in this case digital-detox), then it worked.
+
+4. Upgrade pip: python -m pip install --upgrade pip
+
+5. Add .gitignore: echo "*" > .venv/.gitignore
+
+6. Install Packages: 
+
+i. pip install "fastapi[standard]"
+
+Activate the venv: .venv\Scripts\Activate.ps1
+
+ii. pip install mysql-connector-python
+
+Activate the venv: .venv\Scripts\Activate.ps1
+
+iii. pip install python-dotenv
+
+Activate the venv: .venv\Scripts\Activate.ps1
+
+iv. pip install pydantic
+
+Activate the venv: .venv\Scripts\Activate.ps1
+
+v. pip install streamlit
+
+Activate the venv: .venv\Scripts\Activate.ps1
