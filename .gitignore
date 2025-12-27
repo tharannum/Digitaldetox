@@ -1,8 +1,18 @@
 # Ignore virtual environments
-.venv/
+backend/.venv/
+frontend/node_modules/
 
 # Ignore environment files
 backend/.env
+
+# Build outputs
+build/
+dist/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
 # Ignore cache, build, and log files
 __pycache__/
